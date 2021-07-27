@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "All Companies";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="CompanyDetailTable"></div>
+
+<div class="row mt-2 mb-4">
+    <div class="col-6">
+
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+        <label class="mx-2 mt-1">Add Company</label>
+        <button type="button" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="dark" onclick="addCompanyAction()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<div class="border px-4 py-4">
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>NTN</th>
+                <th>Reg No</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+    </table>
+</div>
+
+<div class="row mt-4">
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/views/Company/Company.js?2"></script>
+    <script>
+        $(document).ready(function () {
+            initializeTable();
+        });
+
+        function editCompanyAction(id) {
+            window.location = "/Company/EditCompany/" + id;
+        }
+        function deleteCompanyAction(id) {
+            //open a dialog to confirm for deletion,
+            //on confirmation, call web api for delete category
+
+
+        }
+        function addCompanyAction() {
+            window.location = "/Company/AddCompany/";
+        }
+    </script>
+}

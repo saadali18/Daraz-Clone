@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Edit User";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h2>EditUser</h2>
+
+}
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="~/Scripts/views/Moderator.js"></script>

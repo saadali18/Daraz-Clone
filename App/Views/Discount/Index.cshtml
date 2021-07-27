@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "All Discounts";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row mt-2 mb-4">
+    <div class="col-6"> 
+
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+        <label class="mx-2 mt-1">Add Discount</label>
+        <button type="button" class="btn btn-outline-primary btn-rounded" data-mdb-ripple-color="dark" onclick="DiscountAddPage()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<div class="border px-4 py-4">
+    <table id="DiscountTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Promo Code</th>
+                <th>Discount Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+    </table>
+</div>
+
+<div class="row mt-4">
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/views/Discount.js?2"></script>
+    <script>
+        $(document).ready(function () {
+            initializeTable();
+        });
+    </script>
+}

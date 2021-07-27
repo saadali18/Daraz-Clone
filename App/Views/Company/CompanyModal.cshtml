@@ -1,0 +1,21 @@
+﻿<div class="modal fade" id="CompanyModal" tabindex="-1" aria-labelledby="ComapnyLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ComapnyLabel">Add Company</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="CompanyId" />
+                @Html.Partial("~/Views/Company/EditCompanyComponent.cshtml")
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" id="AddCompany" onclick="AddCompany()" class="btn btn-primary">Add</button>
+                <button type="button" id="SaveCompany" onclick="EditCompany()" class="btn btn-primary d-none">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

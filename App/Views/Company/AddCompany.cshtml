@@ -1,0 +1,54 @@
+﻿@model SmartTenderPortal.Models.CompanyViewModel
+@{ ViewBag.Title = "Add Company";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+<style>
+    .multiselect {
+        text-align: left;
+    }
+
+    .multiselect b.caret {
+        position: absolute;
+        top: 14px;
+        right: 8px;
+    }
+
+    .multiselect-group {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+</style>
+
+@Html.Partial("EditCompanyComponent", Model)
+
+<div class="row d-flex justify-content-center mt-5 mb-5">
+    <div class="col-lg-10 col-md-12 mb-5">
+        <div class="row">
+            <div class="col-6">
+
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <button type="button" style="min-width:140px" class="btn btn-raised btn-secondary mx-2" onclick="IndexPage()">
+                    <i class="fas fa-times"></i>  <span>Cancel</span>
+                </button>
+                <button type="button" style="min-width:120px" class="btn btn-raised btn-primary" onclick="AddEditCompany(0)">
+                    <i class="fas fa-check"></i> <span>Add</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/views/Company/Company.js?2"></script>
+    <script src="~/Scripts/views/DropDownFromLookUp.js?2"></script>
+    <script>
+        $(document).ready(function () {
+            loadDropDown('#PecCategory', 'Pec_Category');
+            loadMultiselectDropDown('#PecCodes', 'Pec_Code');
+            loadDropDown('#City', 'City');
+            loadDropDown('#Province', 'Province');
+        });
+    </script>
+}

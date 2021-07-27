@@ -1,0 +1,129 @@
+﻿@model IEnumerable<SmartTenderPortal.DbModel.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sub_Category_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sub_Category_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating_Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Review)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Installment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Instock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Top_Reviewed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Special_Offer_Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_URL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_URL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand.Brand_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seller.Seller_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sub_Category_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sub_Category_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating_Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Review)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Installment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Top_Reviewed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Special_Offer_Detail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_URL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image_URL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand.Brand_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seller.Seller_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Product_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Product_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Product_ID })
+        </td>
+    </tr>
+}
+
+</table>

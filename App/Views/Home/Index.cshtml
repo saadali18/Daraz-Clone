@@ -1,0 +1,258 @@
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/Products.cshtml";
+}
+
+    <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"/>
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/Sidebar.css" />
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
+    <div id="demoB">
+        <!-- (A) SIDEBAR -->
+        <div id="demoBSide" class="pt-0">
+            <!-- (A1) EXPAND/COLLAPSE SIDEBAR -->
+            <button id="bTog" onclick="document.getElementById('demoB').classList.toggle('open')">
+                &#8633;
+            </button>
+            <h3 id="tiltfilter" class="d-md-none text-white" style="transform:rotate(90deg)">Advanced Filters</h3>
+
+            <!-- (A2) SIDEBAR ITEMS -->
+            <div class="item">
+                <div class="d-flex justify-content-center">
+                    <nav class="navbar navbar-expand-lg navbar-light txt">
+                        <div id="navbarNv">
+                            <ul class="navbar-nav flex-column" style="width: 200px;">
+                                <li class="nav-divider mb-4" style="font-size: 18px; color: white;">
+                                    Advanced Filters
+                                </li>
+                                <li class="mb-2" style="display: flex; flex-direction: column;">
+                                    <p style="color: floralwhite;">Category: </p>
+                                    <select id="drop" style="height: 30px; ">
+                                        <option value="ElectronicDevices">Electronic Devices</option>
+                                        <option value="Fashion">Fashion</option>
+                                        <option value="HomeandLifestyle">Home and Lifestyle</option>
+                                        <option value="Sports">Sports</option>
+                                    </select>
+                                </li>
+                                
+                                <li class="mb-2" style="display: flex; flex-direction: column;">
+                                    <p style="color: floralwhite;">Sub Category: </p>
+                                    <div id="ElectronicDevicesSub">
+                                        <select id="ElectronicDevicesSubDrop" style="height: 30px; " class="w-100">
+                                            <option value="SmartPhones">Smart Phones</option>
+                                            <option value="TV">TV</option>
+                                            <option value="HeadPhones">Headphones</option>
+                                            <option value="PowerBanks">Power Banks</option>
+                                        </select>
+                                        
+                                    </div>
+                                    <div id="FashionSub" class="d-none">
+                                        <select id="FashionSubDrop" style="height: 30px; " class="w-100">
+                                            <option value="Shirts">Shirts</option>
+                                            <option value="Shoes">Shoes</option>
+                                            <option value="Accessories">Accessories</option>
+                                            <option value="PentsandJeans">Pents and Jeans</option>
+                                        </select>
+                                       
+                                    </div>
+                                    <div id="HomeLifeSub" class="d-none">
+                                        <select id="HomeLifeSubDrop" style="height: 30px; " class="w-100">
+                                            <option value="Decor">Decor</option>
+                                            <option value="Lightning">Lightning</option>
+                                            <option value="MediaMusicandBooks">Media Music and Books</option>
+                                            <option value="KitchenandDining">Kitchen and Dining</option>
+                                        </select>
+                                        
+                                    </div>
+                                    <div id="SportsSub" class="d-none">
+                                        <select id="SportsSubDrop" style="height: 30px; " class="w-100">
+                                            <option value="TeamSports">Team Sports</option>
+                                            <option value="RacketSports">Racket Sports</option>
+                                            <option value="FitnessGadget">Fitness Gadget</option>
+                                            <option value="OutdoorRecreation">Outdoor Recreation</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li class="mb-2" style="display: flex; flex-direction: column;">
+                                    <p style="color: floralwhite;">Brands: </p>
+                                    <input style="width:195px;" class="form-control" id="brands" />
+                                </li>
+                                <li class="mb-2" style="display: flex; flex-direction: column;">
+                                    <p style="color: floralwhite;">Country: </p>
+                                    <select id="Countrydrop" style="height: 30px; ">
+                                        <option value="pakistan">Pakistan</option>
+                                        <option value="china">China</option>
+                                    </select>
+                                </li>
+                                <li class="mb-2" style="display: flex; flex-direction: column;">
+                                    <p style="color: floralwhite;">Sellers: </p>
+                                    <input style="width:195px;" class="form-control" id="sellers" />
+                                </li>
+                                <li class="mb-2" style="display: flex; flex-direction: row;">
+                                    <label class="text-white" for="vehicle3">Is Top Reviewed</label>
+                                    <input class="mt-1 ml-1" type="checkbox" id="istopreviewd" name="vehicle4" value="TopReviewed">
+                                </li>
+                                <li class="mb-2" style="display: flex; flex-direction: column;">
+                                    <p style="margin-top: 20px; color: floralwhite;">Prize Range: </p>
+
+                                    <p style="margin-top: -15px; font-size: 12px; color: floralwhite;"></p>
+                                    <input type="number" placeholder="200" id="min_prize">
+
+                                    <p style="margin-top: 5px; font-size: 12px; color: floralwhite;">To</p>
+                                    <input type="number" placeholder="1000" id="max_prize">
+                                </li>
+                           
+                                <li>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @*$('#max_prize').val()*@
+                                    <button type="button" class="btn btn-secondary mt-3" style="margin-bottom: 20px; background-color: crimson; border-radius: 10px;" onclick="ApplyFilters($('#drop').find('option:selected').text(), $('#ElectronicDevicesSubDrop').find('option:selected').text(), $('#FashionSubDrop').find('option:selected').text(), $('#HomeLifeSubDrop').find('option:selected').text(), $('#SportsSubDrop').find('option:selected').text(), $('#brands').val(), $('#Countrydrop').find('option:selected').text(), $('#sellers').val(), $('#istopreviewd').prop('checked'), $('#min_prize').val(), $('#max_prize').val() )">Apply Filter</button> 
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- (B) MAIN CONTENTS -->
+        <div id="demoBMain">
+            <div>
+                <div>
+                    <ul class="nav nav-tabs border" id="myTab2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active text-primary" id="tab-outline-one" data-toggle="tab" href="#outline-one" role="tab" aria-selected="true">All Products</a>
+                        </li>
+                        @*<li class="nav-item" role="presentation">
+                            <a class="nav-link text-primary" id="tab-outline-two" data-toggle="tab" href="#outline-two" role="tab" aria-selected="false">Recommended Products</a>
+                        </li>*@
+                        
+                    </ul>
+                    <div class="tab-content mt-3" id="myTabContent2">
+                        <div class="tab-pane fade show active" id="outline-one" role="tabpanel" aria-labelledby="tab-outline-one">
+                            <table id="example" class="display" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Product Name</th>
+                                        <th>Prize</th>
+                                        <th>Rating Score</th>
+                                        <th>Review</th>
+                                        <th>Country</th>
+                                        <th>Product Url</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section scripts{
+        
+        <script src="~/Scripts/views/Products.js"></script>
+        <script src="~/Scripts/views/DropDownFromLookUp.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+        <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                //loadDropDown('#PecCategory', 'PecCategory');
+                LoadAllProducts();
+                //LoadRecommendedTenders();
+                //LoadBookmarkedTenders();
+            });
+
+            $("#bTog").click(function () {
+                $("#tiltfilter").toggleClass("d-none");
+            });
+
+            $("#brands").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetBrandsValue", "Home")',
+                    type: 'POST',
+                    dataType:"json",
+                    //contentType: "application/json;charset=utf-8",
+                    data: { search: $("#brands").val()},
+                    success: function (data) {
+                        
+                        response($.map(data, function (item) {
+                            return { label: item.Brand_Name, value: item.Brand_Name };
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            }
+            });
+
+            $("#sellers").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetSellersValue","Home")',
+                    type: 'POST',
+                    dataType:"json",
+                    //contentType: "application/json;charset=utf-8",
+                    data: { search: $("#sellers").val()},
+                    success: function (data) {
+                        console.log($("#sellers").val())
+                        console.log(data)
+                        response($.map(data, function (item) {
+                            return { label: item.Seller_Name, value: item.Seller_Name };
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            }
+            });
+
+
+            
+        </script>
+        <script>
+            $("#drop").change(function () {
+                var end = this.value;
+                if (end == "ElectronicDevices") {
+                   
+                    $("#ElectronicDevicesSub").removeClass('d-none')
+                    $("#FashionSub").addClass('d-none')
+                    $("#HomeLifeSub").addClass('d-none')
+                    $("#SportsSub").addClass('d-none')
+
+                }
+                else if (end == "Fashion") {
+                    
+                    $("#ElectronicDevicesSub").addClass('d-none')
+                    $("#FashionSub").removeClass('d-none')
+                    $("#HomeLifeSub").addClass('d-none')
+                    $("#SportsSub").addClass('d-none')
+                }
+                else if (end == "HomeandLifestyle") {
+                    $("#ElectronicDevicesSub").addClass('d-none')
+                    $("#FashionSub").addClass('d-none')
+                    $("#HomeLifeSub").removeClass('d-none')
+                    $("#SportsSub").addClass('d-none')
+                }
+                else {
+                    
+                    $("#ElectronicDevicesSub").addClass('d-none')
+                    $("#FashionSub").addClass('d-none')
+                    $("#HomeLifeSub").addClass('d-none')
+                    $("#SportsSub").removeClass('d-none')
+                }
+            });
+        </script>
+
+        @*to hide footer*@
+        <script>
+            $("footer").addClass("d-none")
+        </script>
+    }
+
+
+
+
+

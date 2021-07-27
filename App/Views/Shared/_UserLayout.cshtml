@@ -1,0 +1,240 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ 
+<style>
+    header {
+        height: 10vh !important
+    }
+    .navbar {
+        background-color: #2D7FC7;
+    }
+</style>
+<style>
+    .site-footer {
+        padding: 50px 0 30px;
+        background: #1a1a1a;
+        color: #ffffff;
+        position: fixed;
+        /* margin-top: 60px; */
+    }
+    .navbar {
+        transition: 500ms ease;
+        background: transparent;
+    }
+    .dropdown-menu {
+        top: 60px;
+        right: 0px;
+        left: unset;
+        width: 460px;
+        box-shadow: 0px 5px 7px -1px #c1c1c1;
+        padding-bottom: 0px;
+        padding: 0px;
+    }
+        .dropdown-menu:before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            right: 12px;
+            border: 10px solid #2d7fc7;
+            border-color: transparent transparent #2d7fc7 transparent;
+        }
+        .navbar.scrolled {
+            background: #2D7FC7;
+        }
+        .navbar.scrolled {
+            background: #2D7FC7;
+        }
+        @@media (max-width: 600px) {
+            .dropdown-menu{
+                left:0;
+            }
+             
+}
+</style>
+<header>
+    @{
+        var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+        var actionName = ViewContext.RouteData.Values["action"].ToString();
+
+        String getStyle()
+        {
+            if (!(controllerName.Equals("Home") && actionName.Equals("Index")))
+            {
+                return "style=background-color:#2D7FC7";
+
+            }
+            else
+                return "";
+        }
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+        <!-- Navbar -->
+        <nav id="Navbar" class="fixed-top navbar navbar-expand-md navbar-dark scrolling-navbar" @getStyle()>
+            <a class="navbar-brand" href="#">Daraz Clone</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-angle-double-down"></i></span>
+            </button>
+            <div class="collapse navbar-collapse d-lg-flex justify-content-end " id="navbarSupportedContent">
+                <ul class="navbar-nav my-2 mr-4">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell"></i>
+                        </a>
+                        <ul class="dropdown-menu" style="max-height:250px; overflow-y:scroll; overflow-x:hidden;">
+                            <li class="head text-white" style="background-color:#2d7fc7">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                        <span>Notifications (3)</span>
+                                        <a href="" class="float-right text-light">Mark all as read</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="notification-box">
+                                <div class="row">
+
+                                    <div class="col-lg-8 col-sm-8 col-8" style="padding-left:30px;">
+                                        <strong class="text-info">David John</strong>
+                                        <div>
+                                            Lorem ipsum dolor sit amet, consectetur
+                                        </div>
+                                        <small class="text-warning">27.11.2015, 15:00</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="notification-box bg-gray">
+                                <div class="row">
+
+                                    <div class="col-lg-8 col-sm-8 col-8" style="padding-left:30px;">
+                                        <strong class="text-info">David John</strong>
+                                        <div>
+                                            Lorem ipsum dolor sit amet, consectetur
+                                        </div>
+                                        <small class="text-warning">27.11.2015, 15:00</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="notification-box">
+                                <div class="row">
+                                    <div class="col-lg-8 col-sm-8 col-8" style="padding-left:30px;">
+                                        <strong class="text-info">David John</strong>
+                                        <div>
+                                            Lorem ipsum dolor sit amet, consectetur
+                                        </div>
+                                        <small class="text-warning">27.11.2015, 15:00</small>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/Home/About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/Home/Contact">Contact</a>
+                    </li>
+
+                    <li class="nav-item dropdown mr-3">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-alt"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" style="width:100px !important">
+                            @*@if (User.Identity.IsAuthenticated)*@
+
+                            <li><a class="dropdown-item" href="/Profile/PersonalDetails">View Profile</a></li>
+                            <li><a class="dropdown-item" href="/Home/Newsletters">News Letters</a></li>
+                            <li><a class="dropdown-item" href="/Home/UsefulResources">Useful Resources</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>@Html.Partial("_LoginPartial")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    }
+    else
+    {
+        <nav id="Navbar" class="navbar fixed-top  navbar-dark scrolling-navbar d-flex justify-content-between" @getStyle()>
+            <a class="navbar-brand" href="#">Smart Tendering Platform</a>
+
+            <div>
+                <ul class="navbar-nav my-2 mr-4">
+                    <li class="nav-item">
+                        @Html.Partial("_LoginPartial")
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    }
+</header>
+
+<main>
+    @if (controllerName.Equals("Home") && actionName.Equals("Index"))
+    {
+        <img style="width: 100%;" src="~/Content/Images/Tenders_cover.jpg" />
+        <div class="mx-2 my-2">
+            @RenderBody()
+        </div>
+    }
+    else
+    {
+        <br />
+        <div class="justify-content-center d-flex mt-5">
+            <h2>@ViewBag.Title</h2>
+        </div>
+        <br />
+        <div class="container">
+            @RenderBody()
+        </div>
+    }
+</main>
+
+<!--Footer-->
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+    <!--Call to action-->
+    <div class="pt-4">
+        <a class="btn btn-outline-white" href="/Home/Contact"
+           role="button">
+            Contact us
+            <i class="fas fa-phone ml-2"></i>
+        </a>
+        <a class="btn btn-outline-white" href="/Home/Downloads" role="button">
+            Admission Advertisement
+            <i class="fas fa-graduation-cap ml-2"></i>
+        </a>
+    </div>
+    <!--/.Call to action-->
+    <hr class="my-4" style="color:white">
+    <!-- Social icons -->
+    <div class="pb-1 whitea">
+        <a href="#" target="_blank">
+            <i class="fab fa-facebook-f mr-3"></i>
+        </a>
+        <a href="#" target="_blank">
+            <i class="fab fa-twitter mr-3"></i>
+        </a>
+
+        <a href="#" target="_blank">
+            <i class="fab fa-google-plus-g mr-3"></i>
+        </a>
+    </div>
+    <!-- Social icons -->
+    <!--Copyright-->
+    <div class="footer-copyright py-3 whitea" style="color:#fff">
+        © @DateTime.Now.Year Copyright:
+        <a href="#" target="_blank"> UET-MEFA </a>
+    </div>
+    <!--/.Copyright-->
+</footer>
+<!--/.Footer-->
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+}
+
+
+
+

@@ -1,0 +1,160 @@
+﻿@model SmartTenderPortal.DbModel.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sub_Category_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sub_Category_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sub_Category_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sub_Category_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating_Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating_Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Review)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Review)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Installment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Installment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Top_Reviewed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Top_Reviewed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Special_Offer_Detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Special_Offer_Detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_URL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_URL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_URL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_URL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand.Brand_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand.Brand_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seller.Seller_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seller.Seller_Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

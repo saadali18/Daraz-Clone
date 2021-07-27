@@ -1,0 +1,31 @@
+﻿@model SmartTenderPortal.Models.UserViewModel
+@{
+    ViewBag.Title = "Add User";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+@using (Html.BeginForm("AddUser", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.Partial("EditUserComp")
+    <div class="row" style="margin-top:30px">
+        <div class="offset-lg-7 col-lg-2">
+            <button type="button" style="min-width:140px" class="btn btn-raised btn-secondary" onclick="Index()">
+                <i class="fas fa-times"></i>  <span>Cancel</span>
+            </button>
+        </div>
+
+        <div class="col-lg-2">
+            <button type="submit" style="min-width:120px" class="btn btn-raised btn-primary mt-3 mt-md-0">
+                <i class="fas fa-check"></i> <span>Save</span>
+            </button>
+        </div>
+    </div>
+
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="~/Scripts/views/User.js"></script>

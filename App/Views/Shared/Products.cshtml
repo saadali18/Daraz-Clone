@@ -1,0 +1,151 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    header {
+        height: 10vh !important
+    }
+    .navbar {
+        background-color: #2D7FC7;
+    }
+</style>
+<style>
+    .site-footer {
+        padding: 50px 0 30px;
+        background: #1a1a1a;
+        color: #ffffff;
+        position: fixed;
+        /* margin-top: 60px; */
+    }
+    .navbar {
+        transition: 500ms ease;
+        background: transparent;
+    }
+    .dropdown-menu {
+        top: 60px;
+        right: 0px;
+        left: unset;
+        width: 460px;
+        box-shadow: 0px 5px 7px -1px #c1c1c1;
+        padding-bottom: 0px;
+        padding: 0px;
+    }
+    .dropdown-menu:before 
+    {
+            content: "";
+            position: absolute;
+            top: -20px;
+            right: 12px;
+            border: 10px solid #2d7fc7;
+            border-color: transparent transparent #2d7fc7 transparent;
+        }
+
+    .navbar.scrolled {
+        background: #2D7FC7;
+    }
+
+    .navbar.scrolled {
+        background: #2D7FC7;
+    }
+
+    @@media (max-width: 600px) {
+        .dropdown-menu {
+            left: 0;
+        }
+    }
+</style>
+<header>
+    @{
+        var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+        var actionName = ViewContext.RouteData.Values["action"].ToString();
+
+        String getStyle()
+        {
+            if (!(controllerName.Equals("Home") && actionName.Equals("Index")))
+            {
+                return "style=background-color:#2D7FC7";
+
+            }
+            else
+                return "";
+        }
+    }
+        <!-- Navbar -->
+        <nav id="Navbar" class="fixed-top navbar navbar-expand-md navbar-dark scrolling-navbar" @getStyle()>
+            <a class="navbar-brand" href="#">Daraz Clone</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-angle-double-down"></i></span>
+            </button>
+            <div class="collapse navbar-collapse d-lg-flex justify-content-end " id="navbarSupportedContent">
+                <ul class="navbar-nav my-2 mr-4">
+                   
+                    <li>@Html.Partial("_LoginPartial")</li>
+                </ul>
+            </div>
+        </nav>
+</header>
+
+<main>
+    @if (controllerName.Equals("Home") && actionName.Equals("Index"))
+    {
+        <img style="width: 100%;" src="https://icms-image.slatic.net/images/ims-web/c6061133-65be-404f-b587-308ebd00a875.jpg_1200x1200.jpg" />
+        <div class="mx-2 my-2">
+            @RenderBody()
+        </div>
+    }
+    else
+    {
+        <br />
+        <div class="justify-content-center d-flex mt-5">
+            <h2>@ViewBag.Title</h2>
+        </div>
+        <br />
+        <div class="container">
+            @RenderBody()
+        </div>
+    }
+</main>
+
+<!--Footer-->
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+    <!--Call to action-->
+    <div class="pt-4">
+        <a class="btn btn-outline-white" href="/Home/Contact"
+           role="button">
+            Contact us
+            <i class="fas fa-phone ml-2"></i>
+        </a>
+        <a class="btn btn-outline-white" href="/Home/Downloads" role="button">
+            Admission Advertisement
+            <i class="fas fa-graduation-cap ml-2"></i>
+        </a>
+    </div>
+    <!--/.Call to action-->
+    <hr class="my-4" style="color:white">
+    <!-- Social icons -->
+    <div class="pb-1 whitea">
+        <a href="#" target="_blank">
+            <i class="fab fa-facebook-f mr-3"></i>
+        </a>
+        <a href="#" target="_blank">
+            <i class="fab fa-twitter mr-3"></i>
+        </a>
+
+        <a href="#" target="_blank">
+            <i class="fab fa-google-plus-g mr-3"></i>
+        </a>
+    </div>
+    <!-- Social icons -->
+    <!--Copyright-->
+    <!--/.Copyright-->
+</footer>
+<!--/.Footer-->
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+}
+
+
+
+

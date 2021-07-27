@@ -1,0 +1,22 @@
+﻿<div class="modal fade" id="PastWorkModal" tabindex="-1" aria-labelledby="ComapnyLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ComapnyLabel">Add Past Work</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="CompanyId" />
+                @Html.Partial("~/Views/Company/EditPastWorkComponent.cshtml")
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" id="AddPastWork" onclick="AddPastWork()" class="btn btn-primary">Add</button>
+                <button type="button" id="SavePastWork" onclick="EditPastWork()" class="btn btn-primary d-none">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+

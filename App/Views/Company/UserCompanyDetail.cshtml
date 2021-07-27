@@ -1,0 +1,266 @@
+﻿@model SmartTenderPortal.Models.PastWorkViewModel
+
+@{
+    ViewBag.Title = "Sign Up Your Account";
+}
+
+<style>
+    #overlay {
+        background: #ffffff;
+        color: #666666;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 5000;
+        top: 0;
+        left: 0;
+        float: left;
+        text-align: center;
+        padding-top: 25%;
+        opacity: .80;
+    }
+
+    .multiselect {
+        text-align: left;
+    }
+
+        .multiselect b.caret {
+            position: absolute;
+            top: 14px;
+            right: 8px;
+        }
+
+    .multiselect-group {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+</style>
+
+@Html.Partial("CompanyModal")
+@Html.Partial("PastWorkModal")
+@Html.Hidden("CompanyId")
+
+<div class="shadow rounded my-sm-1 my-2 px-3 py-5 mb-lg-5">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-success btn-floating">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label class="text-success">Personal</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-success btn-floating">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label class="text-success">Verification</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary btn-floating">
+                        3
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label class="text-black">Company</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-floating" style="background-color: darkgray; color: white;">
+                        4
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label style="color: darkgrey">Interest</label>
+                </div>
+            </div>
+        </div>
+        <div class="col mt-lg-0 mt-md-0 mt-sm-5">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-floating" style="background-color: darkgray; color: white;">
+                        5
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label style="color: darkgrey">Terms & Conditions</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br />
+    <div class="row">
+        <div class="col">
+            <h2 class="d-flex justify-content-center">Company Details</h2>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-12 col-lg-10">
+
+            <div class="row" id="CompanySelect">
+                <div class="col">
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-md-6 col-lg-6">
+                            <label class="control-label">Select Company</label>
+                            <select id="Company" class="form-control">
+                                <option hidden disabled selected> Nothing selected </option>
+                            </select>
+                            <h6 id="CompanyError" class="text-danger small d-none">Please select company.</h6>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col">
+
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <label class="control-label mt-3">OR</label>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col">
+
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <button type="button" onclick="ShowCompanyModal()" data-mdb-ripple-color="dark" class="btn btn-outline-primary btn-rounded">
+                                Add Company
+                            </button>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2 d-none" id="TableLayout">
+                <div class="col">
+                    <label class="control-label mt-3">Company Details</label>
+                    <table class="table table-bordered mt-2" id="CompanyTable">
+                        <thead>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>NTN</th>
+                                <th>City</th>
+                                <th>Province</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col">
+                    <label class="control-label mt-3">Past Work History</label>
+                    <button type="button" onclick="ShowPastWorkModal()" data-mdb-ripple-color="dark" class="btn btn-outline-primary btn-rounded float-end">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <table class="table table-bordered" id="itemList">
+                        <thead>
+                            <tr>
+                                <th>Work Type</th>
+                                <th>Location</th>
+                                <th>Work Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label id="NoPastWork" class="d-flex justify-content-center">No past work history added</label>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col">
+                    <p id="Error" class="text-danger d-none">Internal Server Error!</p>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <a href="/UserInterest/AddUserInterest" class="text-primary">Skip for now</a>
+                </div>
+
+                <div class="col">
+
+                </div>
+                <div class="col">
+                    <button style="min-width:120px" class="btn btn-raised float-right btn-primary" onclick="Submit()">
+                        <i class="fas fa-check"></i> <span>Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay" style="display:none;">
+    <div class="spinner-border text-primary" role="status"></div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/views/Company/UserCompany.js?2"></script>
+    <script src="~/Scripts/views/DropDownFromLookUp.js?2"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            loadCompanies('#Company');
+            loadDropDown('#WorkType', 'WorkType');
+            loadDropDown('#Location', 'City');
+            loadDropDown('#PecCategory', 'Pec_Category');
+            loadDropDown('#City', 'City');
+            loadDropDown('#Province', 'Province');
+            loadMultiselectDropDown('#PecCodes', 'Pec_Code');
+        });
+
+    </script>
+}
+
+

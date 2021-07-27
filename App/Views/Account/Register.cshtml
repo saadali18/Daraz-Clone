@@ -1,0 +1,185 @@
+﻿@model SmartTenderPortal.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Sign Up Your Account";
+}
+
+<div class="shadow rounded my-sm-1 my-2 px-3 py-5 mb-lg-5">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary btn-floating">
+                        1
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label class="text-black">Personal</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-floating" style="background-color: darkgray; color: white;">
+                        2
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label style="color: darkgrey">Verification</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-floating" style="background-color: darkgray; color: white;">
+                        3
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label style="color: darkgrey">Company</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-floating" style="background-color: darkgray; color: white;">
+                        4
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label style="color: darkgrey">Interest</label>
+                </div>
+            </div>
+        </div>
+        <div class="col mt-lg-0 mt-md-0 mt-sm-5">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-floating" style="background-color: darkgray; color: white;">
+                        5
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label style="color: darkgrey">Terms & Conditions</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br />
+    <div class="row">
+        <div class="col">
+            <h2 class="d-flex justify-content-center">Personal Details</h2>
+        </div>
+    </div>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row d-flex justify-content-center mt-2">
+
+            <div class="col-lg-10 col-md-12">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 mt-4">
+                        <div class="form-outline">
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control form-control-lg" })
+                            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "form-label" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6 mt-4">
+                        <div class="form-outline">
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control form-control-lg" })
+                            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "form-label" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 mt-4">
+                        <div class="form-outline">
+                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control form-control-lg" })
+                            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "form-label" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6 mt-4">
+                        <div class="form-outline">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-lg" })
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 mt-4">
+                        <div class="form-outline">
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-lg" })
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-md-6 mt-4">
+                        <div class="form-outline">
+                            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control form-control-lg" })
+                            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "form-label" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-6">
+
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                        <button style="min-width:120px" class="btn btn-raised btn-primary mt-3 mt-md-0" onclick="OnSubmit()">
+                            <i class="fas fa-check"></i> <span>Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+
+    function OnSubmit() {
+        localStorage.setItem("Email", $('#Email').val());
+        localStorage.setItem("UserName", $('#UserName').val());
+    };
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    document.querySelector("nav").classList.remove("fixed-top")
+</script>
+
+@*<script>
+            VerifyCodeRequest.done(function (response) {
+                // Show successfully for submit message
+                if (response == 'Home') {
+                    window.location.href = 'http://localhost:53834/Home/Index'
+                }
+                else {
+                    window.location.href = 'http://localhost:53834/User/AccountVerification'
+                }
+            });
+        }
+    </script>*@

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Unapproved Companies";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="CompanyDetailTable"></div>
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>NTN</th>
+            <th>Reg No</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+</table>
+
+<div class="row mt-4">
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/views/Company/Company.js?2"></script>
+    <script>
+        $(document).ready(function () {
+            LoadUnApproveCompaniesTable();
+        });
+    </script>
+}

@@ -1,0 +1,95 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+<link href="~/Content/css/NavBar.css" rel="stylesheet">
+
+<header class="l-header" id="header" style="height:70px">
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+</header>
+
+<div class="l-navbar" id="nav-bar">
+    <nav class="l-nav">
+        <div>
+            <a href="#" class="l-nav_logo"><i class='bx bx-layer l-nav_logo-icon'></i> <span class="l-nav_logo-name">Profile</span> </a>
+            <div class="nav_list">
+                <a href="/Profile/PersonalDetails" class="l-nav_link active"> <span class="iconify" data-icon="gg:profile" data-inline="false"></span> <span class="l-nav_name">Personal Details</span> </a>
+                <a href="/Company/ProfileCompany" class="l-nav_link"> <span class="iconify" data-icon="fluent:building-multiple-24-regular" data-inline="false"></span> <span class="l-nav_name">Company Details</span> </a>
+                <a href="#" class="l-nav_link"> <span class="iconify" data-icon="codicon:book" data-inline="false"></span> <span class="l-nav_name">Interest Details</span> </a>
+                <a href="#" class="l-nav_link"> <span class="iconify" data-icon="bi:bookmark-plus" data-inline="false"></span> <span class="l-nav_name">Bookmarked Tenders</span> </a>
+                <a href="#" class="l-nav_link"> <span class="iconify" data-icon="ic:twotone-history" data-inline="false"></span> <span class="l-nav_name">Tenders History</span> </a>
+                <a href="/Payment/PaymentHistory" class="l-nav_link"> <span class="iconify" data-icon="ic:outline-payments" data-inline="false"></span> <span class="l-nav_name">Payment History</span> </a>
+                <a href="/Membership/SubscribeMembership" class="l-nav_link"> <span class="iconify" data-icon="ic:baseline-card-membership" data-inline="false"></span> <span class="l-nav_name">Subscription</span> </a>
+                <a href="#" class="l-nav_link"> <span class="iconify" data-icon="ant-design:user-delete-outlined" data-inline="false"></span> <span class="l-nav_name">Deactivate Account</span> </a>
+            </div>
+        </div>
+        @*<a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>*@
+    </nav>
+</div>
+
+<!--Container Main start-->
+<div class="container-fluid">
+    <br />
+    <br />
+    <div class="justify-content-center d-flex">
+        <h2>@ViewBag.Title</h2>
+    </div>
+    <br />
+    @RenderBody()
+</div>
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            const showNavbar = (toggleId, navId, bodyId, headerId) => {
+                const toggle = document.getElementById(toggleId),
+                    nav = document.getElementById(navId),
+                    bodypd = document.getElementById(bodyId),
+                    headerpd = document.getElementById(headerId)
+
+                // Validate that all variables exist
+                if (toggle && nav && bodypd && headerpd) {
+
+                    // show navbar
+                    nav.classList.toggle('show_nav')
+                    // add padding to body
+                    bodypd.classList.toggle('body-pd')
+                    // add padding to header
+                    headerpd.classList.toggle('body-pd')
+
+                    toggle.addEventListener('click', () => {
+                        // show navbar
+                        nav.classList.toggle('show_nav')
+                        // add padding to body
+                        bodypd.classList.toggle('body-pd')
+                        // add padding to header
+                        headerpd.classList.toggle('body-pd')
+                    })
+                }
+            }
+
+            showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+
+            /*===== LINK ACTIVE =====*/
+            const linkColor = document.querySelectorAll('.l-nav_link')
+
+            function colorLink() {
+                if (linkColor) {
+                    linkColor.forEach(l => l.classList.remove('l-active'))
+                    this.classList.add('l-active')
+                }
+            }
+            linkColor.forEach(l => l.addEventListener('click', colorLink))
+
+            // Your code to run since DOM is loaded and ready
+        });
+    </script>
+}
+

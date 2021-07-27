@@ -1,0 +1,30 @@
+﻿@model SmartTenderPortal.Models.DiscountViewModel
+
+@{
+    Layout = null;
+}
+
+<div class="row d-flex justify-content-center mb-4">
+    <form class="col-lg-5 col-md-8 col-sm-10" id="DiscountForm">
+        <div class="row mt-4">
+            <div class="col">
+                <div class="form-outline">
+                    @Html.EditorFor(model => model.PromoCode, new { htmlAttributes = new { @class = "form-control text-black" } })
+                    @Html.LabelFor(model => model.PromoCode, new { @class = "form-label", @for = "Name" })
+
+                </div>
+                @Html.ValidationMessageFor(model => model.PromoCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="form-outline">
+                    @Html.EditorFor(model => model.DiscountedAmount, new { htmlAttributes = new { @class = "form-control text-black" } })
+                    @Html.LabelFor(model => model.DiscountedAmount, new { @class = "form-label", @for = "Name" })
+
+                </div>
+                @Html.ValidationMessageFor(model => model.DiscountedAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </form>
+</div>

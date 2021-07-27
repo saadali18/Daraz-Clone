@@ -1,0 +1,512 @@
+﻿@{
+    ViewBag.Title = "Sign Up Your Account";
+    //Layout = "Your Layout Page goes here";
+}
+
+@*@Html.Hidden("RedirectTo", Url.Action("Index", "Home"));*@
+@Html.AntiForgeryToken()
+
+<div class="shadow rounded my-sm-1 my-2 px-3 py-5 mb-lg-5">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary btn-floating">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label class="text-success">Personal</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary btn-floating">
+                        2
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label class="text-black">Verification</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-floating" style="background-color: darkgray; color: white;">
+                        3
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label style="color: darkgrey">Company</label>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-floating" style="background-color: darkgray; color: white;">
+                        4
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label style="color: darkgrey">Interest</label>
+                </div>
+            </div>
+        </div>
+        <div class="col mt-lg-0 mt-md-0 mt-sm-5">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-floating" style="background-color: darkgray; color: white;">
+                        5
+                    </button>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <label style="color: darkgrey">Terms & Conditions</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br />
+    <div class="row">
+        <div class="col">
+            <h2 class="d-flex justify-content-center">Account Verification</h2>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-12 col-lg-10">
+            <div class="row shadow px-4 py-4">
+                <div class="col">
+                    <form id="registerUser">
+                        <h5 class="mb-2">Email Verification</h5>
+                        <div id="sendotp" class="md-form">
+                            <label>Please verify your email account to proceed further</label>
+                            <br />
+                            <button type="button" class="btn btn-primary float-right" onclick="Send_Email_Code()">Send OTP</button>
+                            <br />
+                            <p id="CodeNotSend" class="text-danger d-none">Error: please try again after a while</p>
+                        </div>
+                        <div id="verifyotp" class="d-none">
+                            <div class="form-outline">
+                                <input type="number" id="Emailcode" class="form-control" required>
+                                <label for="Emailcode" class="form-label"> Enter otp code</label>
+
+                            </div>
+                            <p class="form-label" id="alertMsg">We have sent you a 6-digit code on your Email ID. Check and confirm it.</p>
+                            <div class="d-flex flex-row">
+                                <div class="mr-2">
+                                    <a id="Resend_Email_Code" onclick="ResendCodeEmail()" class="text-primary" style="cursor:pointer">
+                                        Resend Code: <label class="text-dark" id="email_time"> 00:30</label>
+                                    </a>
+                                </div>
+                                <div>
+                                    <div class="clearfix">
+                                        <div id="ResendCodeSpinner" class="spinner-border float-sm-right spinner-border-sm text-primary d-none" role="status">
+                                            <span class="visually-hidden"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p id="WrongEP" class="text-danger mt-2 d-none">Internal server error occurred.</p>
+
+                            <div>
+                                <div>
+                                    <div id="SubmitSpinner" class="spinner-border text-primary d-none" role="status">
+                                        <span class="visually-hidden"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit button -->
+                            <div>
+                                <button id="Email_Verify-btn" class="btn btn-primary mt-2" type="button" onclick="Email_Code_Verification()">Verify</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row shadow px-4 py-4 mt-5">
+                <div class="col">
+                    <form id="registerUser">
+                        <h5 class="mb-2">Phone Verification</h5>
+                        <div id="sendotpphone" class="md-form">
+                            <label>Please verify your Phone Number to proceed furthur</label>
+                            <br />
+                            <button type="button" class="btn btn-primary float-right" onclick="Send_Phone_Code()">Send OTP</button>
+                            <br />
+                            <p id="CodeNotSendPhone" class="text-danger d-none">Error: please try again after a while</p>
+                        </div>
+                        <div id="verifyotpphone" class="d-none">
+                            <div class="form-outline">
+                                <input type="number" id="Phonecode" class="form-control" required>
+                                <label for="Phonecode" class="form-label"> Enter otp code</label>
+
+                            </div>
+                            <p class="form-label" id="alertMsg_phone">We have sent you a 6-digit code on your Email ID. Check and confirm it.</p>
+                            <div class="d-flex flex-row">
+                                <div>
+                                    <a id="Resend_Phone_Code" onclick="ResendCodePhone()" class="text-primary" style="cursor:pointer">
+                                        Resend Code: <label class="text-dark" id="Phone_time"> 00:30</label>
+                                    </a>
+                                </div>
+                                <div>
+                                    <div class="clearfix">
+                                        <div id="ResendCodeSpinner_phone" class="spinner-border float-sm-right spinner-border-sm text-primary d-none" role="status">
+                                            <span class="visually-hidden"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p id="WrongEP_phone" class="text-danger mt-2 d-none">Internal server error occurred.</p>
+
+                            <div>
+                                <div>
+                                    <div id="SubmitSpinner_phone" class="spinner-border text-primary d-none" role="status">
+                                        <span class="visually-hidden"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit button -->
+                            <div>
+                                <div>
+                                    <button id="Phone_Verify-btn" class="btn btn-primary mt-2" type="button" onclick="Phone_Code_Verification()">Verify</button>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-md-12 col-lg-10">
+            <div class="row">
+                <div class="col">
+
+                </div>
+
+                <div class="col">
+
+                </div>
+                <div class="col">
+                    <a style="min-width:120px" id="Verified" class="btn btn-raised float-right btn-primary" href="~/Company/UserCompanyDetail" ">
+                        <i class="fas fa-check"></i> <span>Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script>
+
+        let UserId = JSON.parse(localStorage.getItem('UserId'))
+        let code = "";
+        let checkTimer = true;
+        let sec = 30; // change timer seconds here.... and below in resend function as well
+        let isEmailVerified = false, isPhoneVerified = false
+
+
+        // Function to send Email Code
+        function Send_Email_Code() {
+            $("#CodeNotSend").addClass('d-none');
+            SendCode = $.ajax({
+                url: '/Account/SendOtp',
+                type: 'POST'
+            })
+
+            SendCode.done(function (response) {
+                checkTimer == true // to start email timer
+                // Code Sent Successfully
+                $("#verifyotp").removeClass("d-none");
+                $("#sendotp").addClass("d-none");
+
+                //Function to start timer
+                setInterval(function () {
+                    if (checkTimer == true) {
+                        sec--;
+                        if (sec >= 10) {
+                            document.getElementById("email_time").innerHTML = " 00" + ":" + sec;
+                            // document.getElementById("phone_time").innerHTML = " 00" + ":" + sec;
+                        }
+                        else {
+                            document.getElementById("email_time").innerHTML = " 00" + ":0" + sec;
+                            //document.getElementById("phone_time").innerHTML = " 00" + ":" + sec;
+                        }
+                        if (sec == 0) {
+                            checkTimer = false
+                            $("#Emailcode").attr("disabled", true);
+                        }
+                    }
+                }, 1000);
+
+            });
+            SendCode.fail(function (error) {
+                $("#CodeNotSend").removeClass('d-none');
+            });
+        }
+
+
+        function Send_Phone_Code() {
+
+            $("#CodeNotSendPhone").addClass('d-none');
+            SendCode = $.ajax({
+                url: '/Account/SendOtp',
+                type: 'POST'
+            })
+
+            SendCode.done(function (response) {
+                checkTimer = true // to start phone timer
+                sec = 30 // set timer for phone
+                // Code Sent Successfully
+                $("#verifyotpphone").removeClass("d-none");
+                $("#sendotpphone").addClass("d-none");
+
+                //Function to start timer
+                setInterval(function () {
+                    if (checkTimer == true) {
+                        sec--;
+                        if (sec >= 10) {
+                            document.getElementById("Phone_time").innerHTML = " 00" + ":" + sec;
+                        }
+                        else {
+                            document.getElementById("Phone_time").innerHTML = " 00" + ":" + sec;
+                        }
+                        if (sec == 0) {
+                            checkTimer = false
+                            $("#Phonecode").attr("disabled", true);
+                        }
+                    }
+                }, 1000);
+
+            });
+            SendCode.fail(function (error) {
+                $("#CodeNotSendPhone").removeClass('d-none');
+            });
+        }
+
+        function ResendCodeEmail() {
+            $("input").attr("disabled", false);
+            $('#ResendCodeSpinner').removeClass('d-none')
+            if (checkTimer == false) {
+                ResendCodeRequest = $.ajax({
+                    url: '/Account/SendOtp',
+                    type: 'POST'
+                })
+
+                ResendCodeRequest.done(function (response) {
+                    // Show successfully for submit message
+                    checkTimer = true
+                    sec = 30  // change timer seconds here....
+                    document.getElementById("email_time").innerHTML = " 00" + ":" + sec;
+                    $('#ResendCodeSpinner').addClass('d-none')
+                    $('#alertMsg').removeClass('d-none')
+                    $('#alertMsg').removeClass('text-danger')
+                    $('#alertMsg').html('We have sent you a 6-digit code on your Email ID. Check and confirm it.')
+                });
+
+                ResendCodeRequest.fail(function (error) {
+                    // Show error
+                    checkTimer = true
+                    sec = 30
+                    document.getElementById("email_time").innerHTML = " 00" + ":" + "30";
+                    $('#ResendCodeSpinner').addClass('d-none')
+                    $('#alertMsg').removeClass('d-none')
+                    $('#alertMsg').addClass('text-danger')
+                    $('#alertMsg').html('Internal server error occurred. Please resend again after 30 sec.')
+
+                });
+            }
+            else {
+                $('#ResendCodeSpinner').addClass('d-none')
+                $('#alertMsg').removeClass('d-none')
+                $('#alertMsg').addClass('text-danger')
+                $('#alertMsg').html('Please resend code after ' + sec + ' sec.')
+            }
+        }
+
+        function ResendCodePhone() {
+            $("input").attr("disabled", false);
+            $('#ResendCodeSpinner_phone').removeClass('d-none')
+            if (checkTimer == false) {
+                ResendCodeRequest = $.ajax({
+                    url: '/Account/SendOtp',
+                    type: 'POST'
+                })
+
+                ResendCodeRequest.done(function (response) {
+                    // Show successfully for submit message
+                    checkTimer = true
+                    sec = 30  // change timer seconds here....
+                    document.getElementById("Phone_time").innerHTML = " 00" + ":" + sec;
+                    $('#ResendCodeSpinner_phone').addClass('d-none')
+                    $('#alertMsg').removeClass('d-none')
+                    $('#alertMsg').removeClass('text-danger')
+                    $('#alertMsg').html('We have sent you a 6-digit code on your Phone Number. Check and confirm it.')
+                });
+
+                ResendCodeRequest.fail(function (error) {
+                    // Show error
+                    checkTimer = true
+                    sec = 30
+                    document.getElementById("Phone_time").innerHTML = " 00" + ":" + "30";
+                    $('#ResendCodeSpinner_phone').addClass('d-none')
+                    $('#alertMsg_phone').removeClass('d-none')
+                    $('#alertMsg_phone').addClass('text-danger')
+                    $('#alertMsg_phone').html('Internal server error occurred. Please resend again after 30 sec.')
+
+                });
+            }
+            else {
+                $('#ResendCodeSpinner_phone').addClass('d-none')
+                $('#alertMsg_phone').removeClass('d-none')
+                $('#alertMsg_phone').addClass('text-danger')
+                $('#alertMsg_phone').html('Please resend code after ' + sec + ' sec.')
+            }
+        }
+
+        function Phone_Code_Verification() {
+
+
+            $('#WrongEP_phone').addClass('d-none')
+            code = $('#Phonecode').val()
+
+            if (code.toString().length != 6) {
+                $('#alertMsg_phone').addClass('text-danger')
+                $('#alertMsg_phone').html('Invalid code. Please enter 6 digit code.')
+            }
+            else {
+
+                $('#SubmitSpinner_phone').removeClass('d-none')
+                $('#alertMsg_phone').addClass('d-none')
+                VerifyCodeRequest = $.ajax({
+                    url: '/Account/VerifyOTP/?Code=' + code,
+                    type: 'GET',
+                    data: {
+                        Code: code,
+                    }
+                })
+                VerifyCodeRequest.done(function (response) {
+
+                    // Show successfully for submit message
+                    if (response == 'Correct') {
+                        $('#SubmitSpinner_phone').addClass('d-none')
+                        // var url = $("#RedirectTo").val()
+                        // location.href = url
+                        $("#Phone_Verify-btn").html("Verified")
+                        $("#Phone_Verify-btn").addClass("bg-success");
+                        sec = 1
+                        $("#Resend_Phone_Code").addClass('d-none')
+                        $("#Phone_Verify-btn").attr("disabled", true)
+
+                        isEmailVerified = true
+
+                        if (isPhoneVerified == true) {
+                            $("#Verified").removeClass("d-none")
+                        }
+                    }
+                    else if (response == 'Not Found') {
+                        $('#SubmitSpinner_phone').addClass('d-none')
+                        $('#alertMsg_phone').removeClass('d-none')
+                        $('#alertMsg_phone').addClass('text-danger')
+                        $('#alertMsg_phone').html('Please resend code again.')
+                    }
+                    else {
+                        $('#SubmitSpinner_phone').addClass('d-none')
+                        $('#alertMsg_phone').removeClass('d-none')
+                        $('#alertMsg_phone').addClass('text-danger')
+                        $('#alertMsg_phone').html('Please enter correct code.')
+                    }
+                });
+
+                VerifyCodeRequest.fail(function (error) {
+                    // Show error
+                    $('#SubmitSpinner_phone').addClass('d-none')
+                    $('#WrongEP_phone').removeClass('d-none')
+                    console.log(error)
+                });
+            }
+        }
+
+        function Email_Code_Verification() {
+            $('#WrongEP').addClass('d-none')
+            code = $('#Emailcode').val()
+            if (code.toString().length != 6) {
+                $('#alertMsg').addClass('text-danger')
+                $('#alertMsg').html('Invalid code. Please enter 6 digit code.')
+            }
+            else {
+                $('#SubmitSpinner').removeClass('d-none')
+                $('#alertMsg').addClass('d-none')
+                VerifyCodeRequest = $.ajax({
+                    url: '/Account/VerifyOTP/?Code=' + code,
+                    type: 'GET',
+                    data: {
+                        Code: code,
+                    }
+                })
+                VerifyCodeRequest.done(function (response) {
+                    // Show successfully for submit message
+                    if (response == 'Correct') {
+                        $('#SubmitSpinner').addClass('d-none')
+                        // var url = $("#RedirectTo").val()
+                        // location.href = url
+                        $("#Email_Verify-btn").html("Verified")
+                        $("#Email_Verify-btn").addClass("bg-success");
+                        sec = 1
+                        $("#Resend_Email_Code").addClass('d-none')
+                        $("#Email_Verify-btn").attr("disabled", true)
+
+                        //alert("success")
+                        isPhoneVerified = true
+                        if (isEmailVerified == true) {
+                            $("#Verified").removeClass("d-none")
+                        }
+                    }
+                    else if (response == 'Not Found') {
+                        $('#SubmitSpinner').addClass('d-none')
+                        $('#alertMsg').removeClass('d-none')
+                        $('#alertMsg').addClass('text-danger')
+                        $('#alertMsg').html('Please resend code again.')
+                    }
+                    else {
+                        $('#SubmitSpinner').addClass('d-none')
+                        $('#alertMsg').removeClass('d-none')
+                        $('#alertMsg').addClass('text-danger')
+                        $('#alertMsg').html('Please enter correct code.')
+                    }
+                });
+
+                VerifyCodeRequest.fail(function (error) {
+                    // Show error
+                    $('#SubmitSpinner').addClass('d-none')
+                    $('#WrongEP').removeClass('d-none')
+                    console.log(error)
+                });
+            }
+        }
+    </script>
+}
+

@@ -1,0 +1,51 @@
+﻿@model SmartTenderPortal.Models.CompanyViewModel
+@{ ViewBag.Title = "Company Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+@{ var id = ViewBag.Id; }
+
+@Html.Hidden("CompanyId", (int)id)
+@Html.Partial("EditCompanyComponent", Model)
+
+<div class="row d-flex justify-content-center mt-5 mb-5">
+    <div class="col-lg-10 col-md-12 mb-5">
+        <div class="row">
+            <div class="col-6">
+
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <button type="button" style="min-width:140px" class="btn btn-raised btn-secondary mx-2" onclick="RejectCompany($('#CompanyId').val())">
+                    <i class="fas fa-times"></i>  <span>Reject</span>
+                </button>
+                <button type="button" style="min-width:120px" class="btn btn-raised btn-primary" onclick="ApproveCompany($('#CompanyId').val())">
+                    <i class="fas fa-check"></i> <span>Approve</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/views/Company/Company.js?2"></script>
+    <script src="~/Scripts/views/DropDownFromLookUp.js?2"></script>
+    <script>
+        window.addEventListener('load',
+            function () {
+                loadDropDown('#PecCategory', 'Pec_Category');
+                loadDropDown('#City', 'City');
+                loadDropDown('#Province', 'Province');
+                LoadCompanyInformation($('#CompanyId').val());
+                document.getElementById("Name").disabled = true;
+                document.getElementById("Year").disabled = true;
+                document.getElementById("NTN").disabled = true;
+                document.getElementById("RegNo").disabled = true;
+                document.getElementById("PecCategory").disabled = true;
+                document.getElementById("PecCodes").disabled = true;
+                document.getElementById("Street").disabled = true;
+                document.getElementById("ZipCode").disabled = true;
+                document.getElementById("City").disabled = true;
+                document.getElementById("Province").disabled = true;
+            }, false);
+    </script>
+}

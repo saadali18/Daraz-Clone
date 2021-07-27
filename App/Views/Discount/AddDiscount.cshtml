@@ -1,0 +1,28 @@
+﻿@model SmartTenderPortal.Models.DiscountViewModel
+@{ ViewBag.Title = "Add Discount";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+@Html.Partial("EditDiscountComponent", Model)
+
+<div class="row d-flex justify-content-center mt-5 mb-5">
+    <div class="col-lg-5 col-md-8 col-sm-10">
+        <div class="row">
+            <div class="col-6">
+
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <button type="button" style="min-width:140px" class="btn btn-raised btn-secondary mx-2" onclick="IndexPage()">
+                    <i class="fas fa-times"></i>  <span>Cancel</span>
+                </button>
+                <button type="button" style="min-width:120px" class="btn btn-raised btn-primary" onclick="AddEditDiscount(false)">
+                    <i class="fas fa-check"></i> <span>Add</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/views/Discount.js?2"></script>
+}
